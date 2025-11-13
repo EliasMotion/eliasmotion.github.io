@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Start — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#000;
+      --green:#39ff14;
+      --font:'Share Tech Mono','Courier New',monospace;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      color:var(--green);
+      font-family:var(--font);
+    }
+    .container{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:2rem;
+    }
+    nav{
+      display:flex;
+      flex-direction:column;
+      gap:1.2rem;
+      width:100%;
+      max-width:720px;
+    }
+    .menu{
+      display:inline-block;
+      color:var(--green);
+      text-decoration:none;
+      font-size:2.1rem;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      padding:0.35rem 0.6rem;
+      transition:color .12s ease, transform .12s ease;
+      position:relative;
+      overflow:visible;
+      text-shadow:0 0 6px rgba(57,255,20,0.08);
+      cursor:pointer;
+    }
+    /* animated hacker dots on hover: pseudo-element */
+    .menu::after{
+      content: " · · ·";
+      position:absolute;
+      right: -4rem;
+      top:50%;
+      transform:translateY(-50%);
+      opacity:0;
+      filter:blur(0.6px);
+      letter-spacing:0.2em;
+    }
+    .menu:hover::after, .menu:focus::after{
+      animation: dots 1s steps(4, end) infinite;
+      opacity:1;
+      right: -2.2rem;
+      text-shadow:0 0 10px rgba(57,255,20,0.5);
+    }
+    @keyframes dots{
+      0%{ content:" ·    "; transform:translateY(-50%) translateX(0);}
+      25%{ content:" · ·  "; transform:translateY(-50%) translateX(-2px);}
+      50%{ content:" · · ·"; transform:translateY(-50%) translateX(-4px);}
+      75%{ content:"  · · "; transform:translateY(-50%) translateX(-2px);}
+      100%{ content:"   ·  "; transform:translateY(-50%) translateX(0);}
+    }
+    /* subtle scanning glow when hovered */
+    .menu::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:2px;
+      pointer-events:none;
+      transform:translateY(-8px);
+      opacity:0;
+      transition:opacity .18s ease;
+      box-shadow:0 0 12px rgba(57,255,20,0.15);
+    }
+    .menu:hover::before, .menu:focus::before{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* responsive */
+    @media(max-width:720px){
+      .menu{font-size:1.6rem;}
+    }
+    @media(max-width:420px){
+      .menu{font-size:1.15rem; letter-spacing:0.08em;}
+      .menu::after{display:none;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav aria-label="Hauptnavigation">
+      <a class="menu" href="archive.html">Archiv</a>
+      <a class="menu" href="all-projects.html">All Projects</a>
+      <a class="menu" href="commercials.html">Commercials</a>
+      <a class="menu" href="music-video.html">Music Video</a>
+      <a class="menu" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</body>
+</html>
