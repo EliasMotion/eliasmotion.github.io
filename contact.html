@@ -1,1 +1,82 @@
-<html><body>Kontakt placeholder</body></html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  #console {
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-align: center;
+  }
+  .contact-info {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.25s;
+  }
+  .back-btn:hover, .back-btn:active {
+    color: rgba(255,255,255,1);
+  }
+</style>
+</head>
+<body>
+<a href="index.html" class="back-btn">Zurück</a>
+<div id="console"></div>
+<div class="contact-info" id="contactInfo">
+  <div>Email: elias@example.com</div>
+  <div>Instagram: <a href="https://www.instagram.com/elias.nmr/" target="_blank" style="color:#fff; text-decoration:none;">@elias.nmr</a></div>
+  <div>LinkedIn: <a href="https://www.linkedin.com/in/elias-neumair-008191279" target="_blank" style="color:#fff; text-decoration:none;">LinkedIn</a></div>
+</div>
+<script>
+const consoleDiv = document.getElementById('console');
+const contactDiv = document.getElementById('contactInfo');
+
+const lines = [
+  'C:\\Users> Loading contact info...',
+  'Initializing email module...',
+  'Preparing social links...',
+  'Done.'
+];
+
+let index = 0;
+function typeLine() {
+  if(index < lines.length){
+    consoleDiv.textContent += lines[index] + '\n';
+    index++;
+    setTimeout(typeLine, 80);
+  } else {
+    setTimeout(showContact, 100);
+  }
+}
+
+function showContact(){
+  consoleDiv.style.display = 'none';
+  contactDiv.style.display = 'flex';
+}
+
+typeLine();
+</script>
+</body>
+</html>
