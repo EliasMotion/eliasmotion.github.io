@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang='de'>
+<html lang="de">
 <head>
-<meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archiv</title>
-<style>body{margin:0;padding:20px;background:#000;color:#fff;font-family:'Consolas','Courier New',monospace;display:flex;justify-content:center;align-items:center;height:100vh;}#console{white-space:pre-wrap;overflow:hidden;text-align:center;}.back-btn{position:absolute;top:20px;left:20px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.25s;}.back-btn:hover,.back-btn:active{color:rgba(255,255,255,1);}.content{display:none;flex-direction:column;text-align:center;gap:12px;}</style>
+<style>
+body{margin:0;padding:20px;background:#000;color:#fff;font-family:"Consolas","Courier New",monospace;display:flex;justify-content:center;align-items:center;height:100vh;}
+#console{white-space:pre-wrap;overflow:hidden;text-align:center;}
+.back-btn{position:absolute;top:20px;left:20px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.25s;}
+.back-btn:hover,.back-btn:active{color:rgba(255,255,255,1);}
+.content{display:none;flex-direction:column;text-align:center;gap:12px;}
+@media (max-width:700px){body{font-size:16px;}.back-btn{position:static;margin:6px;display:inline-block;}}
+</style>
 </head>
 <body>
-<a href='index.html' class='back-btn'>Zurück</a>
-<div id='console'></div>
-<div class='content' id='contentDiv'><div>Archiv-Inhalte hier.</div></div>
+<a href="index.html" class="back-btn">Zurück</a>
+<div id="console"></div>
+<div class="content" id="contentDiv"><div>Archiv-Inhalte hier.</div></div>
 <script>
-const lines=['C:\\Users> Loading archive...','Fetching archive data...','Preparing interface...','Done.'];let i=0;const consoleDiv=document.getElementById('console');const contentDiv=document.getElementById('contentDiv');function typeLine(){if(i<lines.length){consoleDiv.textContent+=lines[i]+'\n';i++;setTimeout(typeLine,60);}else setTimeout(()=>{consoleDiv.style.display='none';contentDiv.style.display='flex';},100);}typeLine();
+const lines=['C:\\Users> Loading archive...','Fetching archive data...','Preparing interface...','Done.'];
+let i=0;
+const consoleDiv=document.getElementById('console');
+const contentDiv=document.getElementById('contentDiv');
+function typeLine(){
+  if(i<lines.length){
+    consoleDiv.textContent+=lines[i]+'\n';
+    i++;
+    setTimeout(typeLine,60);
+  } else setTimeout(()=>{consoleDiv.style.display='none';contentDiv.style.display='flex';},100);
+}
+typeLine();
 </script>
 </body>
 </html>
