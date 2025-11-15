@@ -5,103 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Console Start</title>
 <style>
-  body {
-    margin: 0;
-    padding: 20px;
-    background: #000;
-    color: #fff;
-    font-family: "Consolas", "Courier New", monospace;
-    font-size: 18px;
-  }
-  #console {
-    white-space: pre-wrap;
-    overflow: hidden;
-    height: 100vh;
-  }
-  .menu-wrap {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .top-btn {
-    position: absolute;
-    top: 20px;
-    padding: 4px 8px;
-    text-decoration: none;
-    transition: color 0.25s ease;
-    color: rgba(255,255,255,0.45);
-  }
-  .top-btn.left { left: 20px; }
-  .top-btn.right { right: 20px; }
-  .top-btn:hover, .top-btn:active { color: rgba(255,255,255,1); }
-
-  .center-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    font-size: 20px;
-  }
-  .center-btn {
-    padding: 10px 26px;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.25s, color 0.25s, transform 0.1s;
-  }
-  .center-btn:hover, .center-btn:active {
-    background: rgba(255,255,255,0.35);
-    color: #000;
-    transform: translateY(-1px);
-  }
-  @media (max-width:700px) {
-    .top-btn { position: static; margin: 6px; display: inline-block; }
-  }
+body {margin:0;padding:20px;background:#000;color:#fff;font-family:"Consolas","Courier New",monospace;font-size:18px;}
+#console {white-space:pre-wrap;overflow:hidden;height:100vh;}
+.menu-wrap {position:relative;width:100%;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;}
+.top-btn {position:absolute;top:20px;padding:4px 8px;text-decoration:none;transition:color 0.25s ease;color:rgba(255,255,255,0.45);}
+.top-btn.left { left:20px;}
+.top-btn.right { right:20px;}
+.top-btn:hover, .top-btn:active { color: rgba(255,255,255,1); }
+.center-list {display:flex;flex-direction:column;gap:18px;font-size:20px;}
+.center-btn {padding:10px 26px;background:rgba(255,255,255,0.15);color:#fff;text-decoration:none;border-radius:4px;transition:background 0.25s,color 0.25s,transform 0.1s;}
+.center-btn:hover, .center-btn:active { background:rgba(255,255,255,0.35);color:#000;transform:translateY(-1px);}
+@media (max-width:700px){
+    .top-btn {position: static; margin:6px; display:inline-block;}
+    .center-list {flex-direction: column; gap:12px; align-items:center;}
+    .center-btn {padding:8px 16px;}
+    body {font-size:16px;}
+}
 </style>
 </head>
 <body>
 <div id="console"></div>
 <script>
-function typeLines(lines, speed, callback){
-  const consoleDiv = document.getElementById('console');
-  let i = 0;
+function typeLines(lines,speed,callback){
+  const consoleDiv=document.getElementById('console');
+  let i=0;
   function next(){
-    if(i < lines.length){
-      consoleDiv.textContent += lines[i] + '\n';
+    if(i<lines.length){
+      consoleDiv.textContent+=lines[i]+'\n';
       i++;
-      setTimeout(next, speed);
+      setTimeout(next,speed);
     } else if(callback) callback();
   }
   next();
 }
 
 function showMenu(){
-  const consoleDiv = document.getElementById('console');
-  consoleDiv.innerHTML = '';
-  const wrap = document.createElement('div');
-  wrap.className = 'menu-wrap';
+  const consoleDiv=document.getElementById('console');
+  consoleDiv.innerHTML='';
+  const wrap=document.createElement('div');
+  wrap.className='menu-wrap';
 
-  const left = document.createElement('a');
-  left.href = 'projects.html';
-  left.className = 'top-btn left';
-  left.textContent = 'All Projects';
+  const left=document.createElement('a');
+  left.href='projects.html';
+  left.className='top-btn left';
+  left.textContent='All Projects';
 
-  const right = document.createElement('a');
-  right.href = 'contact.html';
-  right.className = 'top-btn right';
-  right.textContent = 'Kontakt';
+  const right=document.createElement('a');
+  right.href='contact.html';
+  right.className='top-btn right';
+  right.textContent='Kontakt';
 
-  const center = document.createElement('div');
-  center.className = 'center-list';
+  const center=document.createElement('div');
+  center.className='center-list';
   ['Archiv','Commercials','Music Videos'].forEach(text => {
-    const a = document.createElement('a');
-    a.href = text.toLowerCase().replace(/ /g,'') + '.html';
-    a.className = 'center-btn';
-    a.textContent = text;
+    const a=document.createElement('a');
+    a.href=text.toLowerCase().replace(/ /g,'')+'.html';
+    a.className='center-btn';
+    a.textContent=text;
     center.appendChild(a);
   });
 
@@ -123,7 +83,7 @@ function showMenu(){
   });
 }
 
-const startupLines = [
+const startupLines=[
   'Microsoft Windows [Version 10.0.19045.3208]',
   '(c) Microsoft Corporation. Alle Rechte vorbehalten.',
   '',
@@ -142,12 +102,12 @@ const startupLines = [
   'Elias is awesome',
   'System ready.'
 ];
-
-while(startupLines.length < 30){
-  startupLines.push('C:\\Users> initializing process ' + (startupLines.length+1) + '...');
+while(startupLines.length<50){
+  startupLines.push('C:\\Users> initializing process '+(startupLines.length+1)+'...');
 }
 
-typeLines(startupLines, 1, showMenu);
+typeLines(startupLines,40,showMenu);
 </script>
 </body>
 </html>
+
