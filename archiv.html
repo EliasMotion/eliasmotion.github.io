@@ -7,52 +7,54 @@
 <style>
   body {
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background: #000;
     color: #fff;
     font-family: "Consolas", "Courier New", monospace;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
   }
-  #console {
-    white-space: pre-wrap;
-    overflow: visible;
-    text-align: center;
-  }
+
+  /* BUTTON FIX */
   .back-btn {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
     color: rgba(255,255,255,0.45);
     text-decoration: none;
     transition: color 0.25s;
+    z-index: 10;
   }
   .back-btn:hover,
   .back-btn:active {
     color: rgba(255,255,255,1);
   }
+
+  #console {
+    white-space: pre-wrap;
+    text-align: center;
+  }
+
   .content {
     display: none;
     flex-direction: column;
     text-align: center;
     gap: 12px;
   }
+
   @media (max-width: 700px) {
     body { font-size: 16px; }
-    .back-btn {
-      position: static;
-      margin: 6px;
-      display: inline-block;
-    }
   }
 </style>
 </head>
 <body>
+
 <a href="index.html" class="back-btn">Zurück</a>
+
 <div id="console"></div>
+
 <div class="content" id="contentDiv">
   <div>Archiv-Inhalte hier.</div>
 </div>
@@ -73,19 +75,17 @@ function typeLine() {
   if (i < lines.length) {
     consoleDiv.textContent += lines[i] + '\n';
     i++;
-    setTimeout(typeLine, 60); // Geschwindigkeit des Tipp-Effekts
+    setTimeout(typeLine, 60);
   } else {
-    // Nach dem Tippen: kurze Pause, dann Inhalte zeigen
     setTimeout(() => {
       consoleDiv.style.display = 'none';
       contentDiv.style.display = 'flex';
-      contentDiv.style.flexDirection = 'column';
-    }, 300); // 300ms Pause
+    }, 300);
   }
 }
 
-// Start Typing
 typeLine();
 </script>
+
 </body>
 </html>
